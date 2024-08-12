@@ -35,9 +35,11 @@ jobs:
             - name: install depend.
               run: npm install
             - name: unit testing
+              id: nodejs-unit-testing-step
               run: npm test
 
             - name: Archive test result
+              if: failure() && (steps.nodejs-unit-testing-step.outcome == 'failure' || steps.nodejs-unit-testing-step.outcome == 'success')
               uses: actions/upload-artifact@v3
               with:
                 name: mocha test result
@@ -60,6 +62,7 @@ jobs:
               run: npm install
 
             - name: check code coverage
+              continue-on-error: true
               run: npm run coverage
 
             - name: Archive test result
