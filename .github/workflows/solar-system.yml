@@ -26,3 +26,5 @@ jobs:
 
             - name: install depend.
               run: npm install
+            - name: unit testing
+              run: npm test
