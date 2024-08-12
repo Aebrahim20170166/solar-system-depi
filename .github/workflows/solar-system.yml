@@ -8,8 +8,8 @@ on:
 
 env:
     MONGO_URI: 'mongodb+srv://supercluster.d8jj.mongodb.net/superData'
-    MONGO_USERNAME: 'superuser'
-    MONGO_PASSWORD: 'SuperPassword'
+    MONGO_USERNAME: ${{ vars.MONGO_USERNAME}}
+    MONGO_PASSWORD: ${{ vars.MONGO_PASSWORD}}
 jobs:
     unit-testing:
         name: unit-testing
